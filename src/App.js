@@ -7,8 +7,6 @@ import './App.css';
 import MovieList from './components/MovieList';
 import MovieHeading from './components/MovieHeading';
 import SearchBar from './components/SearchBar';
-import Favourites from './components/Favourites'
-import RemoveFavorites from './components/RemoveFavorites';
 import MovieListRemove from './components/MovieListRemove';
 
 const App = () => {
