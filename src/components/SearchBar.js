@@ -2,13 +2,17 @@ import React from 'react'
 
 function SearchBar({searchVal,setSearchVal}){
 
-    console.log(searchVal)
     function inputChangeHandle(e){
+      e.preventDefault()
         setSearchVal(e.target.value)
     }
   return (
     <div className='col col-sm-4'>
-        <input className='form-control' placeholder='Search...' type="text" 
+        <input 
+        className='form-control' 
+        value={searchVal}
+        placeholder='Search...' 
+        type="text" 
         onChange={inputChangeHandle}
         />
     </div>

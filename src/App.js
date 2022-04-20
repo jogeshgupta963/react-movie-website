@@ -9,7 +9,7 @@ import MovieHeading from './components/MovieHeading';
 import SearchBar from './components/SearchBar';
 import Favourites from './components/Favourites'
 import RemoveFavorites from './components/RemoveFavorites';
-
+import MovieListRemove from './components/MovieListRemove';
 
 const App = () => {
 	const [movies, setMovies] = useState([]);
@@ -25,14 +25,14 @@ const App = () => {
         setMovies(Search)
     }
 
-    // function saveToLS(item){
-    //     localStorage.setItem('react-movie-app-favourites',JSON.stringify(item))
-    // }
+    function saveToLS(item){
+        localStorage.setItem('react-movie-app-favourites',JSON.stringify(item))
+    }
 
     function addFavMovie(movie){
         const newFav = [...favs,movie]
         setFavs(newFav);
-        // saveToLS(newFav)
+        saveToLS(newFav)
     }
     function removeFavMovie(movie){
             const newFav = favs.filter(fav => fav.imdbID !== movie.imdbID)
@@ -44,12 +44,12 @@ const App = () => {
         getMovieRequest(searchVal)
     }, [searchVal])
 
-    // useEffect(()=>{
-    //     const movieFavourites =JSON.parse(localStorage.getItem('react-movie-app-favourites'))
+    useEffect(()=>{
+        const movieFavourites =JSON.parse(localStorage.getItem('react-movie-app-favourites'))
 
-        // if(movieFavourites)
-        // setFavs(movieFavourites)
-    // },[])
+        if(movieFavourites)
+        setFavs(movieFavourites)
+    },[])
 
 	return (
 		<div className='container-fluid movie-app'>
@@ -61,8 +61,8 @@ const App = () => {
 			<div className='row'>
 				 <MovieList
 					movies={movies}
+                    // favComponent={Favourites}
                     favMovie={addFavMovie}
-                    favComponent={Favourites}
 				/>
 			</div>
 
@@ -71,9 +71,8 @@ const App = () => {
             </div>
 
             <div className='row'>
-				 <MovieList
+				 <MovieListRemove
 					movies={favs}
-                    favComponent={RemoveFavorites}
                     favMovie={removeFavMovie}
 				/>
 			</div>

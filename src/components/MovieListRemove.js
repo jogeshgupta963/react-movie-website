@@ -1,8 +1,9 @@
 import React from 'react';
-import Favourites from './Favourites';
+// import Favourites from './Favourites';
+import RemoveFavorites from './RemoveFavorites';
 
 // const MovieList = ({movies,favouriteComponent,favMovie}) => {
-const MovieListRemove = ({movies,favMovie}) => {
+const MovieList = ({movies,favMovie}) => {
 
 	return (
 		<>
@@ -13,7 +14,7 @@ const MovieListRemove = ({movies,favMovie}) => {
 					<div className="overlay d-flex align-items-center justify-content-center"
 					onClick={()=>favMovie(movie)}
 					>
-					<Favourites/>
+					<RemoveFavorites/>
 					
 					</div>
 
@@ -24,4 +25,4 @@ const MovieListRemove = ({movies,favMovie}) => {
 	);
 };
 
-export default MovieListRemove;
+export default MovieList;
